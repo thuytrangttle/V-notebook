@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V-Nsdfotebook - Your Smart Note-Taking App</title>
+    <title>Legend.so - Building a More Connected Internet</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,14 +13,22 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <i class="fas fa-book-open"></i>
-                <span>V-Notebook</span>
+                <span>legend.so</span>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#download" class="nav-link">Download</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Story <i class="fas fa-chevron-down"></i></a>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Use cases <i class="fas fa-chevron-down"></i></a>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-text">Sign in</a>
+                <a href="#" class="btn btn-primary">Book a demo</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
@@ -30,45 +38,90 @@
         </div>
     </nav>
 
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="container">
+            <span>Vella is now Legend.so <a href="#" class="learn-more">Learn more</a></span>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Transform Your Note-Taking Experience</h1>
-                <p class="hero-subtitle">V-Notebook combines the power of AI with intuitive design to help you capture, organize, and discover your ideas like never before.</p>
+                <h1 class="hero-title">Building a more connected internet.</h1>
+                <p class="hero-subtitle">Context switching kills productivity, access your Notes, Email, Tasks, and Calendar—all in one place!</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">
-                        <i class="fas fa-download"></i>
-                        Download Now
+                    <a href="#" class="btn btn-primary btn-large">
+                        Legend notes
                     </a>
-                    <a href="#features" class="btn btn-secondary">
-                        <i class="fas fa-play"></i>
-                        Watch Demo
+                    <a href="#" class="btn btn-secondary btn-large">
+                        Inbox Hero
                     </a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="app-mockup">
-                    <div class="mockup-screen">
-                        <div class="mockup-header">
-                            <div class="mockup-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                <div class="app-interface">
+                    <div class="interface-pane left-pane">
+                        <div class="pane-header">
+                            <h3>Company Tasks</h3>
+                            <h4>Priorities for this month</h4>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-item">
+                                <span class="task-text">Recent advertising spend</span>
+                            </div>
+                            <div class="task-item">
+                                <span class="task-text">Status of #hire +Sarah</span>
+                            </div>
+                            <div class="task-item">
+                                <span class="task-text">Product development roadmap #dev</span>
                             </div>
                         </div>
-                        <div class="mockup-content">
-                            <div class="note-item">
-                                <h4>Meeting Notes</h4>
-                                <p>Q4 Strategy Discussion...</p>
+                    </div>
+                    <div class="interface-pane center-pane">
+                        <div class="calendar-view">
+                            <div class="calendar-header">
+                                <h3>Calendar</h3>
                             </div>
-                            <div class="note-item">
-                                <h4>Project Ideas</h4>
-                                <p>New feature concepts...</p>
+                            <div class="calendar-days">
+                                <div class="day">
+                                    <span class="date">Tue May 3</span>
+                                    <span class="time">9:00 AM</span>
+                                </div>
+                                <div class="day">
+                                    <span class="date">Wed May 4</span>
+                                    <span class="time">2:00 PM</span>
+                                </div>
+                                <div class="day">
+                                    <span class="date">Thu May 5</span>
+                                    <span class="time">10:00 AM</span>
+                                </div>
                             </div>
-                            <div class="note-item">
-                                <h4>Daily Tasks</h4>
-                                <p>Review code, plan...</p>
+                            <div class="calendar-event">
+                                <span class="event-title">June Advertising Spend</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interface-pane right-pane">
+                        <div class="pane-header">
+                            <h3>Inbox</h3>
+                        </div>
+                        <div class="email-list">
+                            <div class="email-item">
+                                <span class="email-subject">Cloudflare Relay Worker</span>
+                            </div>
+                            <div class="email-item">
+                                <span class="email-subject">Fwd: Urgent Delivery</span>
+                            </div>
+                            <div class="email-item">
+                                <span class="email-subject">Incoming Transfer</span>
+                            </div>
+                            <div class="email-item">
+                                <span class="email-subject">Updated design</span>
+                            </div>
+                            <div class="email-item">
+                                <span class="email-subject">Invitation: Design review @ Mon 3pm</span>
                             </div>
                         </div>
                     </div>
@@ -77,156 +130,107 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- Inbox Hero Section -->
+    <section id="inbox-hero" class="inbox-hero">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose V-Notebook?</h2>
-                <p>Discover the features that make V-Notebook the ultimate note-taking solution</p>
+                <h2>Introducing Inbox hero</h2>
+                <p class="section-subtitle">Two modes, one app.</p>
+                <p class="section-description">Context switching kills productivity, access your Notes, Email, Tasks, and Calendar—all in one place!</p>
+                <a href="#" class="btn btn-primary">Get started →</a>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI-Powered</h3>
-                    <p>Smart suggestions and intelligent organization powered by advanced AI algorithms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Cross-Platform Sync</h3>
-                    <p>Seamlessly sync your notes across desktop, mobile, and web platforms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Advanced Search</h3>
-                    <p>Find any note instantly with powerful search and filtering capabilities.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Customizable</h3>
-                    <p>Personalize your workspace with themes, layouts, and organization systems.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Secure & Private</h3>
-                    <p>End-to-end encryption ensures your notes remain private and secure.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Collaboration</h3>
-                    <p>Share notes and collaborate with team members in real-time.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section id="download" class="download">
-        <div class="container">
-            <div class="download-content">
-                <h2>Get Started Today</h2>
-                <p>Download V-Notebook and experience the future of note-taking</p>
-                <div class="download-options">
-                    <div class="download-option">
-                        <div class="platform-icon">
-                            <i class="fab fa-windows"></i>
+            <div class="ui-components">
+                <div class="component-card">
+                    <div class="component-preview dialog-preview">
+                        <div class="modal-window">
+                            <h4>Edit Profile</h4>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" value="Pedro Duarte" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" value="@peduarte" readonly>
+                            </div>
+                            <button class="btn btn-primary">Save</button>
                         </div>
-                        <h3>Windows</h3>
-                        <p>Windows 10 & 11</p>
-                        <a href="#" class="btn btn-primary">Download for Windows</a>
                     </div>
-                    <div class="download-option">
-                        <div class="platform-icon">
-                            <i class="fab fa-apple"></i>
+                    <h3>Dialog</h3>
+                    <p>Modal and non-modal modes, fine-grained focus control, accessible to screen readers.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-preview dropdown-preview">
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">New Tab</div>
+                            <div class="dropdown-item">New Window</div>
+                            <div class="dropdown-item">Favorites</div>
+                            <div class="dropdown-item">Downloads</div>
+                            <div class="dropdown-item">Show Toolbar</div>
+                            <div class="dropdown-item">Show Full URLs</div>
                         </div>
-                        <h3>macOS</h3>
-                        <p>macOS 11.0+</p>
-                        <a href="#" class="btn btn-primary">Download for macOS</a>
                     </div>
-                    <div class="download-option">
-                        <div class="platform-icon">
-                            <i class="fab fa-google-play"></i>
+                    <h3>Dropdown Menu</h3>
+                    <p>Submenus, checkable items, collision handling, arrow key navigation, and typeahead support.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-preview popover-preview">
+                        <div class="popover">
+                            <h4>Dimensions</h4>
+                            <div class="dimension-inputs">
+                                <div class="input-row">
+                                    <label>Width</label>
+                                    <input type="text" value="100%" readonly>
+                                </div>
+                                <div class="input-row">
+                                    <label>Height</label>
+                                    <input type="text" value="20vh" readonly>
+                                </div>
+                                <div class="input-row">
+                                    <label>Margin</label>
+                                    <input type="text" value="0" readonly>
+                                </div>
+                                <div class="input-row">
+                                    <label>Padding</label>
+                                    <input type="text" value="10%" readonly>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Android</h3>
-                        <p>Android 8.0+</p>
-                        <a href="#" class="btn btn-primary">Get on Google Play</a>
                     </div>
-                    <div class="download-option">
-                        <div class="platform-icon">
-                            <i class="fab fa-app-store-ios"></i>
+                    <h3>Popover</h3>
+                    <p>Fine-grained focus control, collision handling, origin-aware and collision-aware animations.</p>
+                </div>
+                <div class="component-card">
+                    <div class="component-preview slider-preview">
+                        <div class="slider-container">
+                            <div class="slider-track">
+                                <div class="slider-thumb">
+                                    <i class="fas fa-arrow-left"></i>
+                                </div>
+                            </div>
                         </div>
-                        <h3>iOS</h3>
-                        <p>iOS 14.0+</p>
-                        <a href="#" class="btn btn-primary">Download on App Store</a>
                     </div>
+                    <h3>Slider</h3>
+                    <p>Supports keyboard and touch thumbs for value ranges, and more.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Composable Workspace Section -->
+    <section id="composable" class="composable-workspace">
         <div class="container">
             <div class="section-header">
-                <h2>Get in Touch</h2>
-                <p>Have questions or feedback? We'd love to hear from you!</p>
+                <h2 class="gradient-text">Composable workspace.</h2>
+                <p class="section-description">Context switching kills productivity, access your Notes, Email, Tasks, and Calendar—all in one place!</p>
+                <a href="#" class="btn btn-primary">Book a demo</a>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>support@vnotebook.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Office</h4>
-                            <p>123 Innovation Drive<br>Tech City, TC 12345</p>
-                        </div>
+            <div class="workspace-preview">
+                <div class="workspace-placeholder">
+                    <div class="placeholder-content">
+                        <i class="fas fa-plus"></i>
+                        <span>Workspace Preview</span>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
@@ -237,47 +241,40 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <i class="fas fa-book-open"></i>
-                        <span>V-Notebook</span>
+                        <span>legend.so</span>
                     </div>
-                    <p>Transforming the way you capture and organize your thoughts with intelligent note-taking technology.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
+                    <p>Building a more connected internet through seamless productivity tools.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Product</h4>
                     <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#download">Download</a></li>
+                        <li><a href="#">Legend Notes</a></li>
+                        <li><a href="#">Inbox Hero</a></li>
+                        <li><a href="#">Features</a></li>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="#">API</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Story</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Support</h4>
+                    <h4>Resources</h4>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 V-Notebook. All rights reserved.</p>
+                <p>&copy; 2024 Legend.so. All rights reserved.</p>
             </div>
         </div>
     </footer>

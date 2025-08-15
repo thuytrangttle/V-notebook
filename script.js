@@ -74,192 +74,140 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.feature-card, .download-option, .contact-form').forEach(el => {
+document.querySelectorAll('.component-card, .app-interface').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
 
-// Form handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Show loading state
-        submitBtn.classList.add('loading');
-        submitBtn.textContent = 'Sending...';
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        try {
-            // Simulate API call (replace with actual endpoint)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+// Interactive UI Component Previews
+document.addEventListener('DOMContentLoaded', () => {
+    // Dialog preview interaction
+    const dialogPreview = document.querySelector('.dialog-preview');
+    if (dialogPreview) {
+        dialogPreview.addEventListener('click', () => {
+            dialogPreview.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                dialogPreview.style.transform = 'scale(1)';
+            }, 200);
+        });
+    }
+
+    // Dropdown preview interaction
+    const dropdownPreview = document.querySelector('.dropdown-preview');
+    if (dropdownPreview) {
+        let isOpen = false;
+        dropdownPreview.addEventListener('click', () => {
+            const dropdownMenu = dropdownPreview.querySelector('.dropdown-menu');
+            if (isOpen) {
+                dropdownMenu.style.transform = 'scaleY(0)';
+                dropdownMenu.style.opacity = '0';
+            } else {
+                dropdownMenu.style.transform = 'scaleY(1)';
+                dropdownMenu.style.opacity = '1';
+            }
+            isOpen = !isOpen;
+        });
+    }
+
+    // Popover preview interaction
+    const popoverPreview = document.querySelector('.popover-preview');
+    if (popoverPreview) {
+        popoverPreview.addEventListener('click', () => {
+            popoverPreview.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                popoverPreview.style.transform = 'scale(1)';
+            }, 200);
+        });
+    }
+
+    // Slider preview interaction
+    const sliderPreview = document.querySelector('.slider-preview');
+    if (sliderPreview) {
+        const sliderThumb = sliderPreview.querySelector('.slider-thumb');
+        let isDragging = false;
+        let startX, startLeft;
+
+        sliderThumb.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startLeft = sliderThumb.offsetLeft;
+            sliderThumb.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
             
-            // Show success message
-            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-            contactForm.reset();
-            
-        } catch (error) {
-            showNotification('Failed to send message. Please try again.', 'error');
-        } finally {
-            // Reset button state
-            submitBtn.classList.remove('loading');
-            submitBtn.textContent = originalText;
-        }
+            const deltaX = e.clientX - startX;
+            const newLeft = Math.max(0, Math.min(180, startLeft + deltaX));
+            sliderThumb.style.left = newLeft + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            sliderThumb.style.cursor = 'grab';
+        });
+    }
+});
+
+// App interface interaction
+const appInterface = document.querySelector('.app-interface');
+if (appInterface) {
+    // Add hover effects to interface panes
+    const interfacePanes = appInterface.querySelectorAll('.interface-pane');
+    interfacePanes.forEach(pane => {
+        pane.addEventListener('mouseenter', () => {
+            pane.style.transform = 'translateY(-5px)';
+            pane.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+        });
+        
+        pane.addEventListener('mouseleave', () => {
+            pane.style.transform = 'translateY(0)';
+            pane.style.boxShadow = 'none';
+        });
+    });
+
+    // Add click interactions to task and email items
+    const interactiveItems = appInterface.querySelectorAll('.task-item, .email-item');
+    interactiveItems.forEach(item => {
+        item.addEventListener('click', () => {
+            item.style.background = '#f3f4f6';
+            item.style.borderColor = '#667eea';
+            setTimeout(() => {
+                item.style.background = 'white';
+                item.style.borderColor = '#e5e7eb';
+            }, 300);
+        });
     });
 }
 
-// Notification system
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
-        </div>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        max-width: 400px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
-    
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    });
-}
-
-// Download button click tracking
-document.querySelectorAll('.download-option .btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const platform = btn.closest('.download-option').querySelector('h3').textContent;
-        showNotification(`Download started for ${platform}!`, 'success');
+// Workspace placeholder interaction
+const workspacePlaceholder = document.querySelector('.workspace-placeholder');
+if (workspacePlaceholder) {
+    workspacePlaceholder.addEventListener('click', () => {
+        // Simulate workspace loading
+        const placeholderContent = workspacePlaceholder.querySelector('.placeholder-content');
+        placeholderContent.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Loading workspace...</span>';
         
-        // Simulate download (replace with actual download logic)
         setTimeout(() => {
-            showNotification(`${platform} download completed!`, 'success');
+            placeholderContent.innerHTML = '<i class="fas fa-check-circle"></i><span>Workspace ready!</span>';
+            placeholderContent.style.color = '#10b981';
         }, 2000);
     });
-});
-
-// Feature card hover effects
-document.querySelectorAll('.feature-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-15px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
-
-// Typing effect for hero title (optional enhancement)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
 }
 
-// Initialize typing effect when page loads
-window.addEventListener('load', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = heroTitle.textContent;
-        typeWriter(heroTitle, originalText, 50);
-    }
-});
-
-// Add CSS for notifications
-const notificationStyles = document.createElement('style');
-notificationStyles.textContent = `
-    .notification-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-    
-    .notification-close {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-    }
-    
-    .notification-close:hover {
-        opacity: 0.8;
-    }
-    
-    .notification-message {
-        flex: 1;
-    }
-`;
-
-document.head.appendChild(notificationStyles);
+// Gradient text animation
+const gradientText = document.querySelector('.gradient-text');
+if (gradientText) {
+    // Add subtle animation to gradient text
+    setInterval(() => {
+        gradientText.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        setTimeout(() => {
+            gradientText.style.background = 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)';
+        }, 100);
+    }, 3000);
+}
 
 // Performance optimization: Debounce scroll events
 function debounce(func, wait) {
@@ -284,14 +232,6 @@ const debouncedScrollHandler = debounce(() => {
     } else {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = 'none';
-    }
-    
-    // Parallax effect
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
     }
 }, 10);
 
@@ -319,13 +259,6 @@ document.addEventListener('keydown', (e) => {
                 bar.style.opacity = '1';
             });
         }
-        
-        // Close notifications
-        const notifications = document.querySelectorAll('.notification');
-        notifications.forEach(notification => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        });
     }
 });
 
@@ -371,3 +304,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.body.insertBefore(skipLink, document.body.firstChild);
 });
+
+// Add CSS for enhanced interactions
+const enhancedStyles = document.createElement('style');
+enhancedStyles.textContent = `
+    .component-card {
+        cursor: pointer;
+    }
+    
+    .component-card:hover .component-preview {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+    
+    .interface-pane {
+        transition: all 0.3s ease;
+    }
+    
+    .task-item, .email-item {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .workspace-placeholder {
+        cursor: pointer;
+    }
+    
+    .workspace-placeholder:hover {
+        border-color: #667eea;
+        background: #f8fafc;
+    }
+    
+    .gradient-text {
+        transition: background 0.3s ease;
+    }
+`;
+
+document.head.appendChild(enhancedStyles);
